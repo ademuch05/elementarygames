@@ -25,7 +25,7 @@ function searchGame() {
         card.innerHTML = `
             <a href="description.html?id=${game.id}" class="mb-5">
                 <div class="card" class="rounded-3">
-                        <img src="${game.background_image}" class="ratio-img rounded-3" alt="${game.name}">
+                        <img src="${game.background_image}" class="rounded-3" alt="${game.name}">
                 </div>
                 <div class="d-flex flex-column justify-content-center py-3 px-1">
                     <div class="genre-game text-start  sm-text">${gameGenre}</div>
