@@ -26,6 +26,13 @@ fetch(url1)
         `;
       hgContainer.appendChild(card);
     });
+
+    const loaderWrapper = document.getElementById("loader-wrapper");
+    loaderWrapper.classList.add("fade-out");
+    setTimeout(() => {
+      loaderWrapper.classList.add("d-none");
+      document.getElementById("content").classList.remove("d-none");
+    }, 500);
   })
   .catch((error) => {
     console.error("Terjadi kesalahan: ", error);

@@ -39,8 +39,13 @@ fetch(url2)
         `;
       platformFilter.appendChild(card);
     });
-    document.getElementById("loader").classList.add("d-none");
-    document.getElementById("content").classList.remove("d-none");
+
+    const loaderWrapper = document.getElementById("loader-wrapper");
+    loaderWrapper.classList.add("fade-out");
+    setTimeout(() => {
+      loaderWrapper.classList.add("d-none");
+      document.getElementById("content").classList.remove("d-none");
+    }, 500);
   })
   .catch((error) => {
     console.error("Terjadi kesalahan: ", error);

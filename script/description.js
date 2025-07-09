@@ -20,7 +20,7 @@ fetch(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`)
 
       <div class="row">
         <!-- Info Left -->
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3">
           <div class="card p-3 mb-3">
             <p><b>Name:</b> ${game.name}</p>
             <p><b>Rating:</b> ${game.rating}</p>
@@ -29,6 +29,7 @@ fetch(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`)
             <p><b>Features:</b> ${gameFeatures}</p>
             <p><b>Platforms:</b> ${gamePlatforms}</p>
           </div>
+          <button class="btn btn-primary w-100 ">Bookmark</button>
         </div>
 
         <!-- Info Right -->
@@ -40,4 +41,14 @@ fetch(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`)
         </div>
       </div>
     `;
+
+    const loaderWrapper = document.getElementById("loader-wrapper");
+    loaderWrapper.classList.add("fade-out");
+    setTimeout(() => {
+      loaderWrapper.classList.add("d-none");
+      document.getElementById("content").classList.remove("d-none");
+    }, 500);
+  })
+  .catch((error) => {
+    console.error("Terjadi kesalahan: ", error);
   });
