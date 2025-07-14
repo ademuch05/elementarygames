@@ -47,3 +47,10 @@ searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
   searchGame();
 });
+
+const loaderWrapper = document.getElementById("loader-wrapper");
+loaderWrapper.classList.add("fade-out");
+setTimeout(() => {
+  loaderWrapper.classList.add("d-none");
+  document.getElementById("content").classList.remove("d-none");
+}, 500);

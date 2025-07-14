@@ -29,7 +29,7 @@ fetch(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`)
             <p><b>Features:</b> ${gameFeatures}</p>
             <p><b>Platforms:</b> ${gamePlatforms}</p>
           </div>
-          <button class="btn btn-primary w-100 ">Bookmark</button>
+          <!-- <button class="btn btn-primary w-100 ">Bookmark</button> -->
         </div>
 
         <!-- Info Right -->

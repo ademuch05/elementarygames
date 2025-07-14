@@ -19,6 +19,9 @@
     />
     <!-- CSS -->
     <link rel="stylesheet" href="style/style.css" />
+
+    <!-- Backend-->
+    <script type="module" src="./backend/scripts_backend/index_backend.js" defer></script>
   </head>
   <body>
     <!-- Loader -->
@@ -42,9 +45,9 @@
             <a href="./pages/search.html" class="btn btn-light btn-sm px-3 ms-2 fw-light">Search</a>
 
             <!-- BELUM LOGIN -->
-            <a href="./pages/login.html" class="btn btn-primary btn-sm px-4 ms-2 fw-light">Login</a>
+            <a href="./pages/login.html" class="btn btn-primary btn-sm px-4 ms-2 fw-light" id="login">Login</a>
             <!-- SUDAH LOGIN -->
-            <div class="ms-2 btn-group d-none">
+            <div class="ms-2 btn-group d-none" id="profile">
               <button type="button" class="btn btn-primary btn-sm px-4 fw-light rounded-1" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Profile</button>
               <ul class="dropdown-menu dropdown-menu-end" style="width: 250px">
                 <li class="dropdown-item d-flex align-items-center gap-2 py-3" style="max-width: 100%">
@@ -56,8 +59,8 @@
                     <p class="text-dark sm-text mb-0" style="margin: 0; word-break: break-word; white-space: normal">ade.10124433@mahasiswa.unikom.ac.id</p>
                   </div>
                 </li>
-                <li><a class="dropdown-item py-1" href="#">Bookmark</a></li>
-                <li><a class="dropdown-item py-1 text-danger" href="#">Logout</a></li>
+                <!-- <li><a class="dropdown-item py-1" href="#">Bookmark</a></li> -->
+                <li><a class="dropdown-item py-1 text-danger" href="#" id="logout">Logout</a></li>
               </ul>
             </div>
           </div>
