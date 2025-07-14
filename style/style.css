@@ -93,3 +93,9 @@ footer {
     padding-inline: 2rem;
   }
 }
+
+
+.hidden {
+  display: none;
+}
+

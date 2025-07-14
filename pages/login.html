@@ -7,6 +7,7 @@
     <meta property="og:description" content="Website that displays a list of games on various platforms" />
     <meta property="og:image" content="https://elementarygames.vercel.app/img/hero.png" />
     <link rel="icon" href="../img/logo.png" type="image/png" />
+    
 
     <title>Login Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,9 +16,10 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="loginpg.css" />
+    <!-- <link rel="stylesheet" href="loginpg.css" /> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" href="loginpg.css" />
     <link rel="stylesheet" href="../style/style.css" />
+    <script type="module" src="../backend/scripts_backend/login_backend.js" defer></script>
     <style>
       section {
         background-image: url("../img/gbr_login.png");
@@ -95,7 +97,9 @@
                         <input type="password" class="form-control" id="password" placeholder="Enter password" />
                       </div>
 
-                      <button type="submit" class="btn w-100 text-white" style="background-color: #2793ba">Login</button>
+                      <button type="submit" id="submit" class="btn w-100 text-white" style="background-color: #2793ba">Login</button>
+                      <p class="my-1 w-100 text-center sm-text">or</p>
+                      <button type="button" class="btn w-100 text-white" style="background-color: #2793ba" id="login-with-google">Login With Google</button>
 
                       <div class="text-center mt-3">
                         <a href="./forgotpw.html" style="color: #2793ba; text-decoration: underline">Forgot Password</a>

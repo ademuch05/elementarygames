@@ -19,6 +19,9 @@
     />
     <!-- CSS -->
     <link rel="stylesheet" href="style/style.css" />
+
+    <!-- Backend-->
+     <script type="module" src="./backend/scripts_backend/index_backend.js" defer></script>
   </head>
   <body>
     <!-- <div class="w-100" style="background-color:"> -->
@@ -35,18 +38,31 @@
             <img class="logo" src="./img/logo.png" alt="" />
             <span class="fw-bold fs-5">Elementary</span>
           </a>
+          <!-- sudah login -->
           <div>
             <a href="#" class="d-none d-sm-inline btn btn-primary btn-sm px-4 fw-light">Home</a>
             <a href="./pages/search.html" class="btn btn-light btn-sm px-3 ms-2 fw-light">Search</a>
-            <a href="./pages/login.html" class="btn btn-primary btn-sm px-4 ms-2 fw-light">Login</a>
-            <div class="ms-2 btn-group d-none">
-              <button type="button" class="btn btn-primary btn-sm px-3 fw-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Profile</button>
-              <ul class="dropdown-menu dropdown-menu-lg-end">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Bookmark</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+            
+            
+
+            <div class="ms-2 btn-group d-none" id = "profile">
+              <button type="button" class="btn btn-primary btn-sm px-4 fw-light rounded-1" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Profile</button>
+              <ul class="dropdown-menu dropdown-menu-end" style="width: 250px">
+                <li class="dropdown-item d-flex align-items-center gap-2 py-3" style="max-width: 100%">
+                  <div class="rounded-circle overflow-hidden" style="width: 40px; height: 40px; background-color: aqua; flex-shrink: 0" >
+                    <img id="user-photo"  class="w-100 h-100 object-fit-cover" alt="avatar"  />
+                  </div>
+
+                  <div class="flex-grow-1" style="max-width: 200px; word-break: break-word; overflow-wrap: break-word">
+                    <p class="text-dark sm-text mb-0" style="margin: 0; word-break: break-word; white-space: normal" id="user-email"></p>
+                  </div>
+                </li>
+                <li><a class="dropdown-item py-1" href="#">Bookmark</a></li>
+                <li><a class="dropdown-item py-1 text-danger"  id="logout">Logout</a></li>
               </ul>
             </div>
+            <!-- belum login -->
+            <a href="./pages/login.html" class="btn btn-primary btn-sm px-4 ms-2 fw-light" id="login">Login</a>
           </div>
         </div>
       </nav>
