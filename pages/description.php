@@ -8,32 +8,27 @@
     <meta property="og:image" content="https://namadomain.com/img/hero.png" />
     <link rel="icon" href="../img/logo.png" type="image/png" />
 
-    <title>List Game Platform</title>
-    <!-- BOOTSTRAP -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-    <!-- CSS -->
+    <title>Fortnite: Blitz Royale</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../style/style.css" />
     <script type="module" src="../backend/scripts_backend/index_backend.js" defer></script>
+    <script type="module" src="./backend/scripts_backend/index_backend.js" defer></script>
     <style>
+      .game-image img {
+        width: 100%;
+        border-radius: 12px;
+        aspect-ratio: 2/1;
+        object-fit: cover;
+      }
       .card {
-        background-color: #090a1a;
+        background-color: #1e293b;
         border: none;
       }
-      .ratio-img {
-        width: 100%;
-        aspect-ratio: 3 / 2;
-        object-fit: cover;
-        display: block;
-      }
-
       .game-title {
-        font-weight: 600;
-        margin-top: 0.25rem;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
       }
     </style>
   </head>
@@ -79,11 +74,8 @@
         </div>
       </nav>
 
-      <!-- ISI -->
-      <section class="container hot-games pt-5 flex-fill">
-        <h1 id="pl-title" class="mt-6 mb-5 fs-3 fw-bold">Platform:</h1>
-        <div id="platform-filter" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 mt-4"></div>
-      </section>
+      <!-- Main Content -->
+      <div id="desc-contain" class="container pt-5 flex-fill"></div>
 
       <!-- FOOTER -->
       <footer class="w-100 py-4 d-flex justify-content-center mt-5">
@@ -91,13 +83,8 @@
       </footer>
     </div>
 
-    <!-- BOOTSTRAP SCRIPT -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
-    <!-- JS -->
-    <script src="../script/platform.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script/description.js"></script>
   </body>
 </html>

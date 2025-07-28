@@ -1,76 +1,52 @@
 const API_KEY = "aa188895826b49c99a0d073e4bbb814e";
 const platforms = "187";
-const platforms2 = "4,187,1,18,186,7,3,21";
-const url1 = `https://api.rawg.io/api/games?key=${API_KEY}&page_size=5&platforms=${platforms}`;
-const url2 = `https://api.rawg.io/api/games?key=${API_KEY}&ordering=-metacritic&page_size=6&platforms=${platforms2}`;
-const url3 = `https://api.rawg.io/api/platforms?key=${API_KEY}&page_size=8`;
+// const url3 = ``;
 
-fetch(url1)
-  .then((response) => response.json())
+fetch("http://localhost/elementarygames/service/hotgames.php")
+  .then((res) => res.json())
   .then((data) => {
     const hgContainer = document.getElementById("hg-container");
 
-    data.results.forEach((game) => {
+    data.forEach((game) => {
       const card = document.createElement("div");
-      const gameGenre = game.genres.slice(0, 1).map((genre) => genre.name);
-      card.classList = "hg-card col pb-3";
-
+      card.classList = "col pb-3";
       card.innerHTML = `
-           <a href="./pages/description.html?id=${game.id}">
-            <img src="${game.background_image}" alt=${game.name} class="w-100 object-fit-cover rounded-3" alt="" style="aspect-ratio:4/5"/>
-            <div class="mx-2">
-              <p class="sm-text mt-3 fs-7 mb-0">${gameGenre}</p>
-              <p class="fw-semibold mt-1">${game.name}</p>
-            </div>
-          </a>
-        `;
-      hgContainer.appendChild(card);
-    });
-
-    const loaderWrapper = document.getElementById("loader-wrapper");
-    loaderWrapper.classList.add("fade-out");
-    setTimeout(() => {
-      loaderWrapper.classList.add("d-none");
-      document.getElementById("content").classList.remove("d-none");
-    }, 500);
-  })
-  .catch((error) => {
-    console.error("Terjadi kesalahan: ", error);
-  });
-
-//   METACRITIC
-fetch(url2)
-  .then((response) => response.json())
-  .then((data) => {
-    const mcContainer = document.getElementById("mc-container");
-
-    data.results.forEach((game) => {
-      const card = document.createElement("div");
-      let shortDesc = game.description;
-      card.classList = "hg-card col pb-4";
-
-      fetch(`https://api.rawg.io/api/games/${game.id}?key=${API_KEY}`)
-        .then((res) => res.json())
-        .then((detail) => {
-          card.innerHTML = `
-        <a href="./pages/description.html?id=${game.id}">
-          <img src="${game.background_image}" alt="${game.name}" class="w-100 object-fit-cover rounded-3" style="aspect-ratio:3/2"/>
+        <a href="./pages/description.php?id=${game.id}">
+          <img src="${game.image_url}" alt="${game.title}" class="w-100 object-fit-cover rounded-3" style="aspect-ratio:4/5"/>
           <div class="mx-2">
-            <p class="fw-semibold mt-3 mb-0">${game.name}</p>
-            <p class="sm-text mt-1 fs-7">${detail.description_raw.slice(0, 150)}...</p>
+            <p class="sm-text mt-3 fs-7 mb-0">${game.genre}</p>
+            <p class="fw-semibold mt-1">${game.title}</p>
           </div>
         </a>
       `;
-        });
-      mcContainer.appendChild(card);
+      document.getElementById("hg-container").appendChild(card);
     });
-  })
-  .catch((error) => {
-    console.error("Terjadi kesalahan: ", error);
+  });
+
+// //   METACRITIC
+fetch("http://localhost/elementarygames/service/bestgame.php")
+  .then((res) => res.json())
+  .then((data) => {
+    const mcContainer = document.getElementById("mc-container");
+    data.forEach((game) => {
+      const card = document.createElement("div");
+      card.classList = "hg-card col pb-4";
+      const description = game.description ? game.description.slice(0, 150) + "..." : "No description";
+      card.innerHTML = `
+        <a href="./pages/description.php?id=${game.id}">
+          <img src="${game.image_url}" alt="${game.title}" class="w-100 object-fit-cover rounded-3" style="aspect-ratio:3/2"/>
+          <div class="mx-2">
+            <p class="fw-semibold mt-3 mb-0">${game.title}</p>
+            <p class="sm-text mt-1 fs-7">${description}</p>
+          </div>
+        </a>
+      `;
+      document.getElementById("mc-container").appendChild(card);
+    });
   });
 
 //   PLATFORM
-fetch(url3)
+fetch("https://api.rawg.io/api/platforms?key=${API_KEY}&page_size=8")
   .then((response) => response.json())
   .then((data) => {
     const pgContainer = document.getElementById("pg-container");
@@ -80,7 +56,7 @@ fetch(url3)
       card.classList = "hg-card col pb-3";
 
       card.innerHTML = `
-           <a href="./pages/platform.html?idpl=${platform.id}">
+           <a href="./pages/platform.php?idpl=${platform.id}">
             <img src="img/platforms/${platform.slug}.png" alt=${platform.name} class="w-100 object-fit-cover rounded-3" alt="" style="aspect-ratio:1/1"/>
             <div class="mx-2">
             <p class="fw-semibold mt-3 mb-0">${platform.name}
@@ -94,3 +70,10 @@ fetch(url3)
   .catch((error) => {
     console.error("Terjadi kesalahan: ", error);
   });
+
+const loaderWrapper = document.getElementById("loader-wrapper");
+loaderWrapper.classList.add("fade-out");
+setTimeout(() => {
+  loaderWrapper.classList.add("d-none");
+  document.getElementById("content").classList.remove("d-none");
+}, 500);

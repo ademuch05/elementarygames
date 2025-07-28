@@ -79,11 +79,34 @@
         </div>
       </nav>
 
-      <!-- ISI -->
-      <section class="container hot-games pt-5 flex-fill">
-        <h1 id="pl-title" class="mt-6 mb-5 fs-3 fw-bold">Platform:</h1>
-        <div id="platform-filter" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 mt-4"></div>
+      <section class="container hot-games mt-5">
+        <h2 class="fs-4 fw-semibold">All Games</h2>
+        <div id="hg-container" class="row row-cols-2 row-cols-sm-3 row-cols-lg-5 mt-4"></div>
       </section>
+
+      </div>
+
+      <script>
+        fetch("http://localhost/elementarygames/service/allgame_be.php")
+  .then(res => res.json())
+  .then(data => {
+    data.forEach(game => {
+      const card = document.createElement("div");
+      card.classList = "col pb-3";
+      card.innerHTML = `
+        <a href="../pages/description.php?id=${game.id}">
+          <img src="/elementarygames/${game.image_url}" alt="${game.title}" class="w-100 object-fit-cover rounded-3" style="aspect-ratio:4/5"/>
+          <div class="mx-2">
+            <p class="sm-text mt-3 fs-7 mb-0">${game.genre}</p>
+            <p class="fw-semibold mt-1">${game.title}</p>
+          </div>
+        </a>
+      `;
+      document.getElementById("hg-container").appendChild(card);
+    });
+  });
+
+      </script>
 
       <!-- FOOTER -->
       <footer class="w-100 py-4 d-flex justify-content-center mt-5">

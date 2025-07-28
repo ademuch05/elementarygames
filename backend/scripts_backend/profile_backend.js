@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: "elementary-web",
   storageBucket: "elementary-web.firebasestorage.app",
   messagingSenderId: "1077721408779",
-  appId: "1:1077721408779:web:b0631c8a8edf2cb1b3ee0e"
+  appId: "1:1077721408779:web:b0631c8a8edf2cb1b3ee0e",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -16,21 +16,21 @@ const auth = getAuth(app);
 // Tampilkan info user yang login
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    document.getElementById('user-name').textContent = user.displayName || "Anonymous";
-    document.getElementById('user-email').textContent = user.email;
-    document.getElementById('user-photo').src = user.photoURL || "https://www.w3schools.com/howto/img_avatar.png";
+    document.getElementById("user-name").textContent = user.displayName || "Anonymous";
+    document.getElementById("user-email").textContent = user.email;
+    document.getElementById("user-photo").src = user.photoURL || "https://www.w3schools.com/howto/img_avatar.png";
   } else {
-    window.location.href = "index.html"; // Redirect jika tidak login
+    window.location.href = "index.php"; // Redirect jika tidak login
   }
 });
 
-
 //logout
-document.getElementById('logout').addEventListener('click', () => {
-  signOut(auth).then(() => {
-    window.location.href = "dashboard.html"; // Balik ke login
-  }).catch((error) => {
-    alert("Logout gagal: " + error.message);
-  });
+document.getElementById("logout").addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      window.location.href = "index.php"; // Balik ke login
+    })
+    .catch((error) => {
+      alert("Logout gagal: " + error.message);
+    });
 });
-

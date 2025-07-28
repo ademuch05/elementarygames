@@ -1,42 +1,44 @@
-API_KEY = "aa188895826b49c99a0d073e4bbb814e";
 const urlParams = new URLSearchParams(window.location.search);
 const gameId = urlParams.get("id");
-//${game.}
-fetch(`https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`)
+
+fetch(`../service/gamedetail.php?id=${gameId}`)
   .then((res) => res.json())
   .then((game) => {
-    const gameGenre = game.genres && game.genres.length > 0 ? game.genres.slice(0, 3).map((genre) => genre.name) : ["-"];
-    const gameFeatures = game.tags && game.tags.length > 0 ? game.tags.slice(0, 3).map((tag) => tag.name) : ["-"];
-    const gamePlatforms = game.platforms.slice(0, 3).map((p) => p.platform.name);
+    if (game.error) throw new Error(game.error);
 
     const container = document.getElementById("desc-contain");
 
+    const genre = game.genre || "-";
+    const features = game.features || "-"; // opsional, kalau punya
+    const platforms = game.platform || "-"; // misal disimpan di kolom `platform`
+    const image = game.image_url ? `../${game.image_url}` : "../img_game/default.jpg";
+    const rating = game.rating || "-";
+    const release = game.release_date || "-";
+    const description = game.description || "-";
+
     container.innerHTML = `
-        <div id="game-title" class="game-title text-center mt-6">${game.name}</div>
+      <div id="game-title" class="game-title text-center mt-6">${game.title}</div>
 
       <div class="game-image mb-4">
-        <img src="${game.background_image}" alt="Fortnite Game Image" />
+        <img src="${image}" alt="Game Image" />
       </div>
 
       <div class="row">
-        <!-- Info Left -->
         <div class="col-md-4 mb-3">
           <div class="card p-3 mb-3">
-            <p><b>Name:</b> ${game.name}</p>
-            <p><b>Rating:</b> ${game.rating}</p>
-            <p><b>Released:</b> ${game.released}</p>
-            <p><b>Genres:</b> ${gameGenre}</p>
-            <p><b>Features:</b> ${gameFeatures}</p>
-            <p><b>Platforms:</b> ${gamePlatforms}</p>
+            <p><b>Name:</b> ${game.title}</p>
+            <p><b>Rating:</b> ${rating}</p>
+            <p><b>Released:</b> ${release}</p>
+            <p><b>Genres:</b> ${genre}</p>
+            <p><b>Features:</b> ${features}</p>
+            <p><b>Platforms:</b> ${platforms}</p>
           </div>
-          <!-- <button class="btn btn-primary w-100 ">Bookmark</button> -->
         </div>
 
-        <!-- Info Right -->
         <div class="col-md-8">
           <div class="card p-4">
             <p class="fs-5 fw-semibold">Description</p>
-            <p>${game.description}</p>
+            <p>${description}</p>
           </div>
         </div>
       </div>

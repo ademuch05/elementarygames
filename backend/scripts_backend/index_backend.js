@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "elementary-web",
   storageBucket: "elementary-web.firebasestorage.app",
   messagingSenderId: "1077721408779",
-  appId: "1:1077721408779:web:b0631c8a8edf2cb1b3ee0e"
+  appId: "1:1077721408779:web:b0631c8a8edf2cb1b3ee0e",
 };
 
 // Inisialisasi Firebase
@@ -21,27 +21,20 @@ const content = document.getElementById("content");
 const loader = document.getElementById("loader");
 
 onAuthStateChanged(auth, (user) => {
-  
   if (user) {
-    
     profile.classList.remove("d-none");
     login.classList.add("d-none");
-    document.getElementById('user-email').textContent = user.email || "elementary@gmail.com";
-    document.getElementById('user-photo').src = user.photoURL || "./img/hot-game.png";
+    document.getElementById("user-email").textContent = user.email || "elementary@gmail.com";
+    document.getElementById("user-photo").src = user.photoURL || "./img/hot-game.png";
   } else {
-    
     profile.classList.add("d-none");
     login.classList.remove("d-none");
   }
-
-  
 });
-
 
 // Logout
 document.getElementById("logout").addEventListener("click", () => {
   signOut(auth).then(() => {
-    window.location.href = "index.html";
+    window.location.href = "index.php";
   });
 });
-
