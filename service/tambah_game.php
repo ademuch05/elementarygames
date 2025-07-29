@@ -1,8 +1,13 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'games_elementary';
+// $host = 'localhost';
+// $user = 'root';
+// $pass = '';
+// $db = 'games_elementary';
+// $port = 3306;
+$host = 'g934po.h.filess.io';
+$user = 'elementary_setsdollwe';
+$pass = '45d8e682462d32cd4746bcfdb2b852e356cc3e9e';
+$db = 'elementary_setsdollwe';
 $port = 3307;
 
 $conn = new mysqli($host, $user, $pass, $db, $port);
@@ -33,8 +38,17 @@ if (move_uploaded_file($_FILES['image']['tmp_name'], $targetPath)) {
           VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("ssdsssss", $title, $genre, $rating, $release_date, $imagePath, $description, $features, $platform);
-  $stmt->execute();
+if (!$stmt) {
+  die("Gagal prepare: " . $conn->error);
+}
+
+if (!$stmt->bind_param("ssdsssss", $title, $genre, $rating, $release_date, $imagePath, $description, $features, $platform)) {
+  die("Gagal bind_param: " . $stmt->error);
+}
+
+if (!$stmt->execute()) {
+  die("Gagal execute: " . $stmt->error);
+}
 
   header("Location: ../index.php");
   exit;

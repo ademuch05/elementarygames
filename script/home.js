@@ -50,7 +50,7 @@ fetch(`https://api.rawg.io/api/platforms?key=${API_KEY}&page_size=8`)
       card.classList = "hg-card col pb-3";
 
       card.innerHTML = `
-           <a href="./pages/platform.php?idpl=${platform.id}">
+           <a href="./pages/platform.html?idpl=${platform.id}">
             <img src="img/platforms/${platform.slug}.png" alt=${platform.name} class="w-100 object-fit-cover rounded-3" alt="" style="aspect-ratio:1/1"/>
             <div class="mx-2">
             <p class="fw-semibold mt-3 mb-0">${platform.name}

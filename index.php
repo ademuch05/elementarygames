@@ -21,18 +21,18 @@
     <link rel="stylesheet" href="style/style.css" />
 
     <!-- Backend-->
-    <script type="module" src="./backend/scripts_backend/index_backend.js" defer></script>
+    <script type="module" src="./backend/scripts_backend/reg.js" defer></script>
   </head>
   <body>
     <!-- Loader -->
-    <div id="loader-wrapper" class="d-none position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center" style="background-color: #090a1a; z-index: 100">
+    <div id="loader-wrapper" class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center" style="background-color: #090a1a; z-index: 100">
       <div id="loader" class="spinner-grow text-light" role="status" style="width: 50px; height: 50px">
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
     <!-- loader -->
 
-    <div id="content" class="">
+    <div id="content" class="d-none">
       <!-- NAVBAR -->
       <nav class="position-fixed w-100 navbar py-3">
         <div class="container">
@@ -41,8 +41,8 @@
             <span class="fw-bold fs-5">Elementary</span>
           </a>
           <div>
-            <a href="./pages/admin.php" class="btn btn-light btn-sm px-3 ms-2 fw-light">admin</a>
-            <a href="./pages/allgames.php" class="d-none d-sm-inline btn btn-primary btn-sm px-4 fw-light">all game</a>
+            <!-- <a href="./pages/admin.php" class="btn btn-light btn-sm px-3 ms-2 fw-light">admin</a> -->
+            <a href="./pages/allgames.php" class="d-none d-sm-inline btn btn-primary btn-sm px-4 fw-light">All Games</a>
             <a href="./pages/search.html" class="btn btn-light btn-sm px-3 ms-2 fw-light">Search</a>
 
             <!-- BELUM LOGIN -->
@@ -53,14 +53,15 @@
               <ul class="dropdown-menu dropdown-menu-end" style="width: 250px">
                 <li class="dropdown-item d-flex align-items-center gap-2 py-3" style="max-width: 100%">
                   <div class="rounded-circle overflow-hidden" style="width: 40px; height: 40px; background-color: aqua; flex-shrink: 0">
-                    <img src="./img/hot-game.png" class="w-100 h-100 object-fit-cover" alt="avatar" />
+                    <img src="./img/hot-game.png" class="w-100 h-100 object-fit-cover" alt="avatar" id='user-photo'/>
                   </div>
 
                   <div class="flex-grow-1" style="max-width: 200px; word-break: break-word; overflow-wrap: break-word">
-                    <p class="text-dark sm-text mb-0" style="margin: 0; word-break: break-word; white-space: normal">ade.10124433@mahasiswa.unikom.ac.id</p>
+                    <p class="text-dark sm-text mb-0" style="margin: 0; word-break: break-word; white-space: normal" id='user-email'></p>
                   </div>
                 </li>
-                <!-- <li><a class="dropdown-item py-1" href="#">Bookmark</a></li> -->
+                <li><a class="dropdown-item py-1" href="./pages/admin.php">Tambah Game</a></li>
+                <li><a class="dropdown-item py-1" href="./pages/admin_game_list.php">Hapus Game</a></li>
                 <li><a class="dropdown-item py-1 text-danger" href="#" id="logout">Logout</a></li>
               </ul>
             </div>

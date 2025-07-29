@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 require './koneksi.php';
 
 // Ambil game dengan rating di bawah 8, maksimal 6 item
-$sql = "SELECT * FROM games WHERE rating < 8 ORDER BY rating DESC LIMIT 6";
+$sql = "SELECT * FROM games ORDER BY rating DESC LIMIT 6";
 
 $result = $conn->query($sql);
 $games = [];

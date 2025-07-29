@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <div id="content" class="d-none">
+    <div id="content" class="d-flex flex-column d-none" style="min-height: 100vh">
       <!-- NAVBAR -->
       <nav class="position-fixed w-100 navbar py-3">
         <div class="container">
@@ -79,14 +79,27 @@
         </div>
       </nav>
 
-      <section class="container hot-games mt-5">
+      <section class="container hot-games mt-6 flex-fill">
         <h2 class="fs-4 fw-semibold">All Games</h2>
         <div id="hg-container" class="row row-cols-2 row-cols-sm-3 row-cols-lg-5 mt-4"></div>
       </section>
 
-      </div>
+    </div>
 
-      <script>
+      <!-- FOOTER -->
+      <footer class="w-100 py-4 d-flex justify-content-center mt-5">
+        <p>Copyright © 2024 Elementary.</p>
+      </footer>
+    </div>
+
+    <!-- BOOTSTRAP SCRIPT -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+    <!-- JS -->
+     <script>
         fetch("http://localhost/elementarygames/service/allgame_be.php")
   .then(res => res.json())
   .then(data => {
@@ -107,20 +120,6 @@
   });
 
       </script>
-
-      <!-- FOOTER -->
-      <footer class="w-100 py-4 d-flex justify-content-center mt-5">
-        <p>Copyright © 2024 Elementary.</p>
-      </footer>
-    </div>
-
-    <!-- BOOTSTRAP SCRIPT -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
-    <!-- JS -->
     <script src="../script/platform.js"></script>
   </body>
 </html>
